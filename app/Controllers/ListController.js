@@ -18,6 +18,7 @@ export default class ListController {
     let formData = event.target
     let rawList = {
       title: formData.title.value,
+      color: formData.color.value,
     }
     formData.reset();
     ListService.addList(rawList)

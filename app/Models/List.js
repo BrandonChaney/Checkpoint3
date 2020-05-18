@@ -5,13 +5,14 @@ export default class List {
     this.id = data.id || generateId();
     this.title = data.title;
     this.items = data.items || []
+    this.color = data.color
   }
 
   get Template() {
     return /*html*/`
     <div class="col-md-4 col-12 mt-5 ">
     <div class="card shadow">
-      <div class="card-top text-center bg-secondary text-light d-flex flex-column">
+      <div class="card-top text-center text-light d-flex flex-column" style="background-color:${this.color}">
         <i onclick="app.listController.deleteList('${this.id}')" class="fas fa-times text-dark align-self-end action align-self-end pr-2 pt-2" aria-hidden="true"></i>
         <h4>${this.title} </h4>
       </div>
@@ -35,7 +36,7 @@ export default class List {
     let template = ""
     this.items.forEach((item, index) => {
       template += /*html*/`
-          <li class="col-6">${item} </li> <i class="fas fa-times text-danger action text-center pointer col-1 offset-3" 
+          <li class="col-6">${item} </li> <i class="fas fa-times text-light action text-center pointer col-1 offset-3" 
           onclick= "app.listController.deleteItem('${this.id}', ${index})"
                 aria-hidden="true"></i>`
     })
